@@ -1,0 +1,26 @@
+spring:
+  main:
+    banner-mode: "OFF"
+    cloud-platform: kubernetes
+  profiles:
+    active: dev
+
+server:
+  port: 8000
+  compression:
+    enabled: true
+    mime-types: application/json
+
+management:
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include: metrics,info,health
+
+schibsted:
+  autoconfig:
+    logging:
+      ownerteam: "hello-twitch-team"
+
+springfox.documentation.open-api.v3.path: /schema

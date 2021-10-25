@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProperty name="team" scope="context" source="schibsted.autoconfig.logging.ownerteam" defaultValue="-"/>
+
+    <springProfile name="dev,test,integration-test,integrationTest">
+        <appender name="CONSOLE_ACCESS" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>common</pattern>
+            </encoder>
+            <withJansi>true</withJansi>
+        </appender>
+        <appender-ref ref="CONSOLE_ACCESS"/>
+    </springProfile>
+
+    <springProfile name="k8s">
+        <springProperty name="headers" source="schibsted.autoconfig.logging.all-headers" defaultValue="" />
+        <conversionRule conversionWord="realClientIp" converterClass="com.adevinta.mstesthellotwitch1.infrastructure.logging.RealClientIpConverter" />
+        <appender name="CONSOLE_ACCESS" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder class="net.logstash.logback.encoder.AccessEventCompositeJsonEncoder">
+                <providers>
+                    <provider class="com.adevinta.mstesthellotwitch1.infrastructure.logging.HeadersLoggingJsonProvider">
+                        <headers>${headers}</headers>
+                    </provider>
+                    <pattern>
+                        <pattern>
+                            {
+                            "clientip": "%realClientIp",
+                            "timestamp": "%date",
+                            "user": "%user",
+                            "thread": "%threadName",
+                            "request_line": "%requestURL",
+                            "http_verb": "%requestMethod",
+                            "http_request": "%requestURI",
+                            "http_query_string": "%queryString",
+                            "http_version": "%protocol",
+                            "http_status_code": "%statusCode",
+                            "response_bytes": "%bytesSent",
+                            "referer": "%header{Referer}",
+                            "agent": "%header{User-Agent}",
+                            "elapsed_time": "%elapsedTime",
+                            "team": "${team}"
+                            }
+                        </pattern>
+                    </pattern>
+                </providers>
+            </encoder>
+        </appender>
+        <appender-ref ref="CONSOLE_ACCESS"/>
+    </springProfile>
+</configuration>

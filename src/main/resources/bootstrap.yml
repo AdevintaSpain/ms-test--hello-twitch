@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: ms-test--hello-twitch-1
+  cloud:
+    config:
+      enabled: false

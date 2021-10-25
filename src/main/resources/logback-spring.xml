@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include optional="true" resource="custom-loggers.xml" />
+    <springProperty name="team" scope="context" source="schibsted.autoconfig.logging.ownerteam" defaultValue="-"/>
+
+    <springProfile name="dev,test,integration-test,integrationTest">
+        <springProperty name="consoleLogLevel" source="schibsted.autoconfig.logging.console.level" defaultValue="INFO"/>
+        <appender name="CONSOLE" class="ch.qos.logback.classic.AsyncAppender">
+            <neverBlock>true</neverBlock>
+            <appender class="ch.qos.logback.core.ConsoleAppender">
+                <encoder>
+                    <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+                    <charset>utf8</charset>
+                </encoder>
+                <withJansi>true</withJansi>
+            </appender>
+        </appender>
+        <root level="${consoleLogLevel}">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="k8s">
+        <appender name="CONSOLE" class="ch.qos.logback.classic.AsyncAppender">
+            <neverBlock>true</neverBlock>
+            <appender class="ch.qos.logback.core.ConsoleAppender">
+                <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+                    <providers>
+                        <arguments>
+                            <fieldName>context</fieldName>
+                        </arguments>
+                        <pattern>
+                            <pattern>
+                                {
+                                "date": "%date{ISO8601,GMT}",
+                                "priority": "%level",
+                                "pid": "${PID:- }",
+                                "thread": "%t",
+                                "logger": "%logger",
+                                "message": "%.-15000msg",
+                                "stacktrace": "%.-15000throwable",
+                                "team": "%property{team}"
+                                }
+                            </pattern>
+                        </pattern>
+                        <mdc>net.logstash.logback.composite.loggingevent.MdcJsonProvider</mdc>
+                    </providers>
+                </encoder>
+            </appender>
+        </appender>
+        <logger name="com.adevinta" level="INFO" />
+        <root level="WARN">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+</configuration>
