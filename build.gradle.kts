@@ -44,8 +44,10 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
   testImplementation("com.nhaarman:mockito-kotlin:1.6.0")
   testImplementation("io.rest-assured:spring-mock-mvc:4.4.0")
+  testImplementation("com.jayway.jsonpath:json-path-assert:2.6.0")
 
   // Integration Test
+  "integrationTestImplementation"("org.awaitility:awaitility:4.1.0")
   "integrationTestImplementation"("org.testcontainers:testcontainers:1.16.0")
 }
 
