@@ -27,7 +27,7 @@ class HeadersLoggingFilter : Filter {
 
   private fun mdcCloseableListFrom(request: HttpServletRequest) =
     HEADERS_TO_LOG.stream()
-      .map { MDC.putCloseable(it, request.getHeader(it) ?: "-") }
+      .map { MDC.putCloseable("header-$it", request.getHeader(it) ?: "-") }
       .toList()
       .let { CloseableList(it) }
 }

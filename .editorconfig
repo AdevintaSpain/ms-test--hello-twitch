@@ -1,6 +1,6 @@
 [*.{kt,kts,java,gradle,scala}]
 indent_size=2
-ij_continuation_indent_size=6
+ij_continuation_indent_size=2
 charset=utf-8
 insert_final_newline=true
 trim_trailing_whitespace=true
