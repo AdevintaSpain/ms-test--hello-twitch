@@ -1,4 +1,4 @@
-![CI](https://github.com/AdevintaSpain/ms-test--hello-twitch/actions/workflows/gradle.yml/badge.svg)
+[![CI](https://github.com/AdevintaSpain/ms-test--hello-twitch/actions/workflows/gradle.yml/badge.svg)](https://github.com/AdevintaSpain/ms-test--hello-twitch/actions/workflows/gradle.yml)
 
 # Adevinta Spain MicroServices Live!
 
