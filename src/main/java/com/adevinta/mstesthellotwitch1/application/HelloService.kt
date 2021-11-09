@@ -1,5 +1,6 @@
 package com.adevinta.mstesthellotwitch1.application
 
+import com.adevinta.mstesthellotwitch1.domain.HelloRepository
 import io.micrometer.core.instrument.MeterRegistry
 import io.micrometer.core.instrument.Tag
 import org.slf4j.Logger
@@ -7,10 +8,14 @@ import org.slf4j.LoggerFactory
 import org.slf4j.MDC
 
 interface HelloService {
+
   fun sayHello(): String
 }
 
-class SimpleHelloService(private val meterRegistry: MeterRegistry) : HelloService {
+class SimpleHelloService(
+  private val meterRegistry: MeterRegistry,
+  private val helloRepository: HelloRepository
+) : HelloService {
 
   private val logger: Logger = LoggerFactory.getLogger(HelloService::class.java)
 
@@ -21,6 +26,6 @@ class SimpleHelloService(private val meterRegistry: MeterRegistry) : HelloServic
 
     meterRegistry.counter("hellos", listOf(Tag.of("tag1", "abc"))).increment()
 
-    return "Hello twitch!"
+    return helloRepository.getHelloMessage()
   }
 }

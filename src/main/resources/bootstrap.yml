@@ -4,3 +4,10 @@ spring:
   cloud:
     config:
       enabled: false
+
+aws:
+  paramstore:
+    prefix: /microservices/${spring.application.name}
+    default-context: application
+    name: ${aws.paramstore.default-context}
+    enabled: false

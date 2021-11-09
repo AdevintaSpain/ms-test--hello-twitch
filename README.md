@@ -8,6 +8,7 @@ Watch it on YouTube 👇
 
 1. [🌍 Hello World!](https://youtu.be/fIJCqtmxg2M) with [@guatebus](https://github.com/guatebus) & [@rogervinas](https://github.com/rogervinas)
 2. [🔎Logs & 📈Metrics](https://youtu.be/UW-DkoRI1FQ) with [@miquelrossello](https://github.com/miquelrossello) & [@rogervinas](https://github.com/rogervinas)
+3. [🏗️ AWS Infrastructure](https://youtu.be/f7a-_baRon8) with [@tetexxr](https://github.com/tetexxr) & [@rogervinas](https://github.com/rogervinas)
 
 ## Run
 
