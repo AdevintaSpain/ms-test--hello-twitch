@@ -1,0 +1,3 @@
+database:
+  host: "twitch.postgres.pre.spain.fake.com"
+  password: "${DatabasePassword}"

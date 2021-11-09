@@ -4,6 +4,15 @@ spring:
     cloud-platform: kubernetes
   profiles:
     active: dev
+  datasource:
+    url: "jdbc:postgresql://${database.host}:${database.port}/twitch"
+    username: "root"
+    password: "${database.password}"
+
+database:
+  host: localhost
+  port: 5432
+  password: "mypassword"
 
 server:
   port: 8000

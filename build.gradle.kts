@@ -29,6 +29,21 @@ dependencies {
   implementation("org.springframework.boot:spring-boot-starter-security")
   implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
 
+  // Database
+  implementation("org.springframework.boot:spring-boot-starter-jdbc")
+  implementation("org.postgresql:postgresql:42.3.1")
+  implementation("org.flywaydb:flyway-core:8.0.2")
+
+  // AWS Parameter Store
+  implementation("org.springframework.cloud:spring-cloud-starter-aws-parameter-store-config:2.2.6.RELEASE") {
+    exclude("com.amazonaws", "aws-java-sdk-cloudformation")
+    exclude("com.amazonaws", "aws-java-sdk-s3")
+    exclude("com.amazonaws", "aws-java-sdk-ec2")
+  }
+
+  // Bootstrap (to be deprecated)
+  implementation("org.springframework.cloud:spring-cloud-starter-bootstrap")
+
   // Kotlin
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
