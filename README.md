@@ -10,6 +10,8 @@ Watch it on YouTube 👇
 2. [🔎Logs & 📈Metrics](https://youtu.be/UW-DkoRI1FQ) with [@miquelrossello](https://github.com/miquelrossello) & [@rogervinas](https://github.com/rogervinas)
 3. [🏗️ AWS Infrastructure](https://youtu.be/f7a-_baRon8) with [@tetexxr](https://github.com/tetexxr) & [@rogervinas](https://github.com/rogervinas)
 
+Take a look at our [discussions page](https://github.com/AdevintaSpain/ms-test--hello-twitch/discussions) 👀
+
 ## Run
 
 ```
