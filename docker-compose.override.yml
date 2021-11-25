@@ -5,3 +5,11 @@ services:
   postgres:
     ports:
       - "5432:5432"
+
+  kafka:
+    ports:
+      - "9094:9094"
+
+  zookeeper:
+    ports:
+      - "2181:2181"

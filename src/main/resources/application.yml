@@ -8,6 +8,19 @@ spring:
     url: "jdbc:postgresql://${database.host}:${database.port}/twitch"
     username: "root"
     password: "${database.password}"
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: "localhost:9094"
+      bindings:
+        hello-ping-in-0:
+          destination: "priv.hello.twitch.ping"
+          group: "${spring.application.name}"
+        hello-pong-out-0:
+          destination: "priv.hello.twitch.pong"
+    function:
+      definition: "hello-ping;hello-pong"
 
 database:
   host: localhost

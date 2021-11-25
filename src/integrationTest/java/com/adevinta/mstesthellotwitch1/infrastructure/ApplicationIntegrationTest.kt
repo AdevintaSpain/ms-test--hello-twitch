@@ -2,6 +2,7 @@ package com.adevinta.mstesthellotwitch1.infrastructure
 
 import com.adevinta.mstesthellotwitch1.infrastructure.helper.DockerComposeHelper
 import com.adevinta.mstesthellotwitch1.infrastructure.testcases.ApplicationTestCase
+import com.adevinta.mstesthellotwitch1.infrastructure.testcases.HelloKafkaTestCase
 import com.adevinta.mstesthellotwitch1.infrastructure.testcases.HelloRepositoryTestCase
 import com.adevinta.mstesthellotwitch1.infrastructure.testcases.LoggingTestCase
 import org.junit.jupiter.api.AfterAll
@@ -34,4 +35,7 @@ class ApplicationIntegrationTest {
 
   @Nested
   inner class HelloRepository : HelloRepositoryTestCase()
+
+  @Nested
+  inner class HelloKafka : HelloKafkaTestCase()
 }
