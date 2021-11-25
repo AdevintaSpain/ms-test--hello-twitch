@@ -34,6 +34,9 @@ dependencies {
   implementation("org.postgresql:postgresql:42.3.1")
   implementation("org.flywaydb:flyway-core:8.0.2")
 
+  // Kafka
+  implementation("org.springframework.cloud:spring-cloud-starter-stream-kafka")
+
   // AWS Parameter Store
   implementation("org.springframework.cloud:spring-cloud-starter-aws-parameter-store-config:2.2.6.RELEASE") {
     exclude("com.amazonaws", "aws-java-sdk-cloudformation")

@@ -9,6 +9,7 @@ Watch it on YouTube 👇
 1. [🌍 Hello World!](https://youtu.be/fIJCqtmxg2M) with [@guatebus](https://github.com/guatebus) & [@rogervinas](https://github.com/rogervinas)
 2. [🔎Logs & 📈Metrics](https://youtu.be/UW-DkoRI1FQ) with [@miquelrossello](https://github.com/miquelrossello) & [@rogervinas](https://github.com/rogervinas)
 3. [🏗️ AWS Infrastructure](https://youtu.be/f7a-_baRon8) with [@tetexxr](https://github.com/tetexxr) & [@rogervinas](https://github.com/rogervinas)
+4. [✉️Kafka](https://youtu.be/pEii_WtJrrM)
 
 Take a look at our [discussions page](https://github.com/AdevintaSpain/ms-test--hello-twitch/discussions) 👀
 
@@ -17,6 +18,26 @@ Take a look at our [discussions page](https://github.com/AdevintaSpain/ms-test--
 ```
 docker-compose up -d
 ./gradlew bootRun
+```
+
+### Hello!
+
+Use [curl](https://curl.se/):
+```
+curl http://localhost:8000/hello
+```
+
+### Ping-Pong!
+
+Use [kcat](https://github.com/edenhill/kcat):
+
+* Produce:
+```
+echo -n '{"ping":123, "message":"hi!"}' | kcat -b localhost:9094 -P -t priv.hello.twitch.ping 
+```
+* Consume:
+```
+kcat -b localhost:9094 -C -t priv.hello.twitch.pong 
 ```
 
 ## Test
